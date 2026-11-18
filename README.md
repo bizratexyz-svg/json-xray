@@ -1,5 +1,8 @@
 # json-xray
 
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A fast, zero-dependency Python CLI that inspects any JSON or JSONL file (or stdin), infers its schema with field types, null/missing rates, and sample values, and generates **TypeScript interfaces** or **Pydantic v2 models**.
 
 ## Features
@@ -33,6 +36,20 @@ json-xray users.json --ts --name User
 
 # Generate Pydantic v2 models from stdin
 cat payload.json | json-xray --pydantic --name Payload
+```
+
+## Example Output
+
+```text
+$ json-xray users.jsonl
+Format: jsonl | Records: 2 | Fields: 4
+
+Field  Type     Null/Missing  Sample
+-----  -------  ------------  -------------------
+id     integer          0.0%  1
+name   string           0.0%  'Alice'
+email  string?         50.0%  'alice@example.com'
+tags   array            0.0%  ["admin"]
 ```
 
 ## License
